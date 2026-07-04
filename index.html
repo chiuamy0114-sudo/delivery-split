@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外送分帳</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f7f7f7;
+padding:20px;
+}
+.card{
+max-width:400px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,.15);
+}
+h2{
+text-align:center;
+color:#ff4d4f;
+}
+label{
+display:block;
+margin-top:15px;
+font-weight:bold;
+}
+input{
+width:100%;
+padding:12px;
+font-size:18px;
+border-radius:8px;
+border:1px solid #ccc;
+box-sizing:border-box;
+}
+.result{
+margin-top:20px;
+padding:15px;
+background:#fff3cd;
+border-radius:10px;
+font-size:20px;
+font-weight:bold;
+line-height:1.8;
+}
+button{
+width:100%;
+margin-top:20px;
+padding:15px;
+font-size:20px;
+background:#ff4d4f;
+color:white;
+border:none;
+border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>🍱 外送分帳</h2>
+
+<label>👦 諺 餐食金額</label>
+<input id="yan" type="number" placeholder="輸入金額">
+
+<label>👧 陳 餐食金額</label>
+<input id="chen" type="number" placeholder="輸入金額">
+
+<label>🚚 外送費</label>
+<input id="delivery" type="number" placeholder="輸入金額">
+
+<label>📱 平台費</label>
+<input id="platform" type="number" placeholder="輸入金額">
+
+<button onclick="calc()">立即計算</button>
+
+<div class="result" id="result">
+等待計算...
+</div>
+
+</div>
+
+<script>
+function calc(){
+
+let yan=Number(document.getElementById("yan").value)||0;
+let chen=Number(document.getElementById("chen").value)||0;
+let delivery=Number(document.getElementById("delivery").value)||0;
+let platform=Number(document.getElementById("platform").value)||0;
+
+let extra=(delivery+platform)/2;
+
+let yanTotal=yan+extra;
+let chenTotal=chen+extra;
+
+document.getElementById("result").innerHTML=
+"👦 諺："+yanTotal.toFixed(0)+" 元<br><br>👧 陳："+chenTotal.toFixed(0)+" 元";
+
+}
+</script>
+
+</body>
+</html>
